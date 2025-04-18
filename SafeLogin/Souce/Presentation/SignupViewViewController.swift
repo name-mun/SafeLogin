@@ -1,5 +1,5 @@
 //
-//  StartViewController.swift
+//  SignupViewViewController.swift
 //  SafeLogin
 //
 //  Created by 서문가은 on 4/18/25.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class StartViewController: UIViewController {
+final class SignupViewViewController: UIViewController {
     
-    private let startView = StartView()
+    private let signupView = SignupView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +22,7 @@ final class StartViewController: UIViewController {
     }
     
     private func setupUI() {
-        view = startView
+        view = signupView
     }
-
-
+    
 }
-
