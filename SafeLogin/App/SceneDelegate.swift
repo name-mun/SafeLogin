@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
-        navigationController.setViewControllers([ViewController()], animated: true)
+        navigationController.setViewControllers([StartViewController()], animated: true)
     }
 
 
