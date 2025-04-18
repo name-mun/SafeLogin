@@ -25,7 +25,6 @@ final class SignupView: UIView {
         $0.axis = .vertical
         $0.distribution = .fillEqually
         $0.alignment = .center
-        $0.spacing = 12
     }
     
     // 아아디 뷰
@@ -39,6 +38,14 @@ final class SignupView: UIView {
     
     // 닉네임 뷰
     private let nickNameView = InputView(.nickName)
+    
+    // 회원가입 버튼
+    private let signUpButton = UIButton(type: .system).then {
+        $0.setTitle("가입하기", for: .normal)
+        $0.tintColor = .white
+        $0.backgroundColor = .black
+        $0.layer.cornerRadius = 12
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,7 +63,8 @@ final class SignupView: UIView {
         
         [
             titleLabel,
-            inputStackView
+            inputStackView,
+            signUpButton
         ].forEach {
             addSubview($0)
         }
@@ -74,14 +82,20 @@ final class SignupView: UIView {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(10)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(12)
             $0.centerX.equalToSuperview()
         }
         
         inputStackView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(10)
-            $0.bottom.equalToSuperview().inset(200)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(12)
+            $0.height.equalTo(440)
+        }
+        
+        signUpButton.snp.makeConstraints {
+            $0.height.equalTo(48)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(12)
         }
     }
     
