@@ -21,7 +21,7 @@ final class StartView: UIView {
     }
 
     // 시작하기 버튼
-    private let startButton = UIButton(type: .system).then {
+    let startButton = UIButton(type: .system).then {
         $0.backgroundColor = .blue
         $0.tintColor = .white
         $0.layer.cornerRadius = 10
