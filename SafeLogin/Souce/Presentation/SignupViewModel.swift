@@ -1,5 +1,5 @@
 //
-//  SignUpViewModel.swift
+//  SignupViewModel.swift
 //  SafeLogin
 //
 //  Created by 서문가은 on 4/19/25.
@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 import RxCocoa
 
-enum SignUpStatus {
+enum SignupStatus {
     
     case invalidID
     case invalidPassword
@@ -19,9 +19,9 @@ enum SignUpStatus {
     case available
 }
 
-final class SignUpViewModel {
+final class SignupViewModel {
     
-    private let signupStatusRelay = PublishRelay<SignUpStatus>()
+    private let signupStatusRelay = PublishRelay<SignupStatus>()
     private let disposeBag = DisposeBag()
     
     init() {
@@ -29,18 +29,18 @@ final class SignUpViewModel {
     }
 }
 
-extension SignUpViewModel {
+extension SignupViewModel {
     
     struct Input {
         let idText: Observable<String>
-        let password: Observable<String>
+        let passwordText: Observable<String>
         let confirmPasswordText: Observable<String>
         let nicknameText: Observable<String>
-        let createButtonTapped: Observable<Void>
+        let signupButtonTapped: Observable<Void>
     }
     
     struct Output {
-        let signupStatus: Driver<SignUpStatus>
+        let signupStatus: Driver<SignupStatus>
     }
     
     func transform(_ input: Input) -> Output {
@@ -50,7 +50,7 @@ extension SignUpViewModel {
                 
             }).disposed(by: disposeBag)
         
-        input.password
+        input.passwordText
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 
@@ -68,7 +68,7 @@ extension SignUpViewModel {
                 
             }).disposed(by: disposeBag)
         
-        input.createButtonTapped
+        input.signupButtonTapped
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 

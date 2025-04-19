@@ -28,19 +28,19 @@ final class SignupView: UIView {
     }
     
     // 아아디 뷰
-    private let idView = InputView(.id)
+    let idView = InputView(.id)
     
     // 비밀번호 뷰
-    private let passwordView = InputView(.password)
+    let passwordView = InputView(.password)
     
     // 비밀번호 확인 뷰
-    private let confirmPasswordView = InputView(.confirmPassword)
+    let confirmPasswordView = InputView(.confirmPassword)
     
     // 닉네임 뷰
-    private let nickNameView = InputView(.nickName)
+    let nickNameView = InputView(.nickName)
     
     // 회원가입 버튼
-    private let signUpButton = UIButton(type: .system).then {
+    let signupButton = UIButton(type: .system).then {
         $0.setTitle("가입하기", for: .normal)
         $0.tintColor = .white
         $0.backgroundColor = .black
@@ -64,7 +64,7 @@ final class SignupView: UIView {
         [
             titleLabel,
             inputStackView,
-            signUpButton
+            signupButton
         ].forEach {
             addSubview($0)
         }
@@ -92,7 +92,7 @@ final class SignupView: UIView {
             $0.height.equalTo(440)
         }
         
-        signUpButton.snp.makeConstraints {
+        signupButton.snp.makeConstraints {
             $0.height.equalTo(48)
             $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
             $0.horizontalEdges.equalToSuperview().inset(12)
