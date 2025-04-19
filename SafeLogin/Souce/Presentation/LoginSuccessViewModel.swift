@@ -46,6 +46,7 @@ extension LoginSuccessViewModel {
             .withUnretained(self)
             .subscribe(onNext: { owner, nickname in
                 owner.successRelay.accept(())
+                UserDefaults.standard.set(false, forKey: "isLogined")
             }).disposed(by: disposeBag)
         
         input.deleteAccountButtonTapped

@@ -14,9 +14,6 @@ import RxCocoa
 enum SignupStatus {
     
     case idAlreadyExists
-    case invalidId
-    case invalidPassword
-    case passwordMismatch
     case available
 }
 

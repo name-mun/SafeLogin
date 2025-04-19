@@ -52,13 +52,7 @@ extension SignupViewController {
             .drive(with: self, onNext: { owner, signupStatus in
                 switch signupStatus {
                 case .idAlreadyExists:
-                    print()
-                case .invalidId:
-                    print()
-                case .invalidPassword:
-                    print()
-                case .passwordMismatch:
-                    print()
+                    owner.signupView.updateIdTextField(false, true)
                 case .available: owner.connectLoginSuccessView()
                 }
             })
@@ -67,7 +61,7 @@ extension SignupViewController {
         output.availableId
             .skip(1)
             .drive(with: self, onNext: { owner, result in
-                owner.signupView.updateIdTextField(result)
+                owner.signupView.updateIdTextField(result, false)
             })
             .disposed(by: disposeBag)
         

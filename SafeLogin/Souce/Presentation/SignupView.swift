@@ -104,10 +104,11 @@ final class SignupView: UIView {
 
 extension SignupView {
     
-    func updateIdTextField(_ isAvailable: Bool) {
+    func updateIdTextField(_ isAvailable: Bool, _ isAccountProblem: Bool) {
         if !isAvailable {
             self.idView.inputTextField.layer.borderColor = UIColor.red.cgColor
-            self.idView.inputDescriptionLabel.text = "유효한 형식을 입력해주세요."
+            let text = isAccountProblem ? "존재하는 이메일입니다." : "유효한 형식을 입력해주세요."
+            self.idView.inputDescriptionLabel.text = text
         } else {
             self.idView.inputTextField.layer.borderColor = UIColor.gray.cgColor
             self.idView.inputDescriptionLabel.text = ""
