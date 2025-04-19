@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import RxSwift
 
 final class SignupViewController: UIViewController {
     
     private let signupView = SignupView()
     private let signupViewModel = SignupViewModel()
+    
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         view = signupView
@@ -44,5 +47,30 @@ extension SignupViewController {
             nicknameText: nicknameText,
             signupButtonTapped: signupButtonTapped)
         let output = signupViewModel.transform(input)
+        
+        output.signupStatus
+            .drive(with: self, onNext: { owner, signupStatus in
+                switch signupStatus {
+                case .idAlreadyExists:
+                    print()
+                case .invalidId:
+                    print()
+                case .invalidPassword:
+                    print()
+                case .passwordMismatch:
+                    print()
+                case .available: owner.connectLoginSuccessView()
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - 실행 메서드
+
+extension SignupViewController {
+    
+    private func connectLoginSuccessView() {
+        navigationController?.pushViewController(LoginSuccessViewController(), animated: true)
     }
 }
