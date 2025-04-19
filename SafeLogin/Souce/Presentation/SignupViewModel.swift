@@ -30,27 +30,42 @@ final class SignupViewModel {
     private var confirmPassword = ""
     private var nickname = ""
     
-    init() {
-        
-    }
+    init() {}
     
     // 회원가입 가능 상태 확인 메서드
     private func checkSigupStatus() {
-        
         // 아이디가 존재하는지 확인
         if let _ = CoreDataManager.shared.fetchUser(id) {
             signupStatusRelay.accept(.idAlreadyExists)
-            print("가입 불가")
-        } else if !User.availableId(id) { // id가 유효한지 확인
+            print("아이디 존재")
+        } else if !availableId(id) { // id가 유효한지 확인
             signupStatusRelay.accept(.invalidId)
-        } else if !User.availablePassword(password) { // password가 유효한지 확인
+            print("아이디 형식 확인")
+        } else if !availablePassword(password) { // password가 유효한지 확인
             signupStatusRelay.accept(.invalidPassword)
+            print("비밀번호 형식 확인")
         } else if password != confirmPassword { // confirmPassword가 올바른지 확인
             signupStatusRelay.accept(.passwordMismatch)
+            print("비밀번호 불일치")
         } else {
             CoreDataManager.shared.createUser(id: id, password: password, nickname: nickname)
             signupStatusRelay.accept(.available)
+            print("가입 완료")
         }
+    }
+    
+    // 아이디 형식 확인
+    func availableId(_ id: String) -> Bool {
+        let regex = "^[a-z](?=[a-z0-9]{5,19}@)[a-z0-9]{5,19}@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", regex)
+        return emailTest.evaluate(with: id)
+    }
+    
+    // 비밀번호 형식 확인
+    func availablePassword(_ password: String) -> Bool {
+        let regex = "^(?=.*[A-Za-z].*)(?=.*[0-9]|.*[^A-Za-z0-9]).{8,}$"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", regex)
+        return passwordTest.evaluate(with: password)
     }
 }
 
