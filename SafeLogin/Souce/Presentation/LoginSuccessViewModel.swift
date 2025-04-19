@@ -1,0 +1,59 @@
+//
+//  LoginSuccessViewModel.swift
+//  SafeLogin
+//
+//  Created by 서문가은 on 4/19/25.
+//
+
+import Foundation
+
+import RxSwift
+import RxCocoa
+import RxRelay
+
+enum UserStatus {
+    case log
+}
+
+final class LoginSuccessViewModel {
+    
+    private let successRelay = PublishRelay<Void>()
+    private let disposeBag = DisposeBag()
+    
+    private let userId = ""
+    
+    init() {}
+    
+    private func deleteAccount() {
+        CoreDataManager.shared.deleteUser(userId)
+    }
+}
+
+extension LoginSuccessViewModel {
+    
+    struct Input {
+        let logoutButtonTapped: Observable<Void>
+        let deleteAccountButtonTapped: Observable<Void>
+    }
+    
+    struct Output {
+        let success: Driver<Void>
+    }
+    
+    func transform(_ input: Input) -> Output {
+        input.logoutButtonTapped
+            .withUnretained(self)
+            .subscribe(onNext: { owner, nickname in
+                owner.successRelay.accept(())
+            }).disposed(by: disposeBag)
+        
+        input.deleteAccountButtonTapped
+            .withUnretained(self)
+            .subscribe(onNext: { owner, nickname in
+                owner.successRelay.accept(())
+                owner.deleteAccount()
+            }).disposed(by: disposeBag)
+        
+        return Output(success: successRelay.asDriver(onErrorDriveWith: .empty()))
+    }
+}

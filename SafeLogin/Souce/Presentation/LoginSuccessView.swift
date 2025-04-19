@@ -24,7 +24,7 @@ final class LoginSuccessView: UIView {
     }
 
     // 로그아웃 버튼
-    private let logoutButton = UIButton(type: .system).then {
+    let logoutButton = UIButton(type: .system).then {
         $0.backgroundColor = .gray
         $0.tintColor = .white
         $0.layer.cornerRadius = 10
@@ -32,7 +32,7 @@ final class LoginSuccessView: UIView {
     }
     
     // 회원탈퇴 버튼
-    private let deleteAccountButton = UIButton(type: .system).then {
+    let deleteAccountButton = UIButton(type: .system).then {
         $0.backgroundColor = .red
         $0.tintColor = .white
         $0.layer.cornerRadius = 10
