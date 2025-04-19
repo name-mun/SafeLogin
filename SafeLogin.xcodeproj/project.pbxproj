@@ -10,17 +10,17 @@
 		BA0A71C52DB3340E00289B10 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C42DB3340E00289B10 /* RxCocoa */; };
 		BA0A71C72DB3340E00289B10 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C62DB3340E00289B10 /* RxRelay */; };
 		BA0A71C92DB3340E00289B10 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C82DB3340E00289B10 /* RxSwift */; };
-		BA0A73672DB38D7E00289B10 /* SafeLogin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA0A73652DB38D7E00289B10 /* SafeLogin.xcdatamodeld */; };
-		BA0A736A2DB38DC800289B10 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A73692DB38DC800289B10 /* User+CoreDataProperties.swift */; };
-		BA0A736B2DB38DC800289B10 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A73682DB38DC800289B10 /* User+CoreDataClass.swift */; };
+		BA0A73852DB39ADE00289B10 /* SafeLogin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA0A73832DB39ADE00289B10 /* SafeLogin.xcdatamodeld */; };
+		BA0A73882DB39B3100289B10 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A73872DB39B3100289B10 /* UserEntity+CoreDataProperties.swift */; };
+		BA0A73892DB39B3100289B10 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A73862DB39B3100289B10 /* UserEntity+CoreDataClass.swift */; };
 		BA7C51D42DB2309900D8ADA1 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA7C51D32DB2309900D8ADA1 /* Then */; };
 		BA7C51D72DB230C000D8ADA1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA7C51D62DB230C000D8ADA1 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA0A73662DB38D7E00289B10 /* SafeLogin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SafeLogin.xcdatamodel; sourceTree = "<group>"; };
-		BA0A73682DB38DC800289B10 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BA0A73692DB38DC800289B10 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BA0A73842DB39ADE00289B10 /* SafeLogin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SafeLogin.xcdatamodel; sourceTree = "<group>"; };
+		BA0A73862DB39B3100289B10 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BA0A73872DB39B3100289B10 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA579A5B2DB22A4F001C4936 /* SafeLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -64,9 +64,9 @@
 		BA579A522DB22A4F001C4936 = {
 			isa = PBXGroup;
 			children = (
-				BA0A73682DB38DC800289B10 /* User+CoreDataClass.swift */,
-				BA0A73692DB38DC800289B10 /* User+CoreDataProperties.swift */,
-				BA0A73652DB38D7E00289B10 /* SafeLogin.xcdatamodeld */,
+				BA0A73862DB39B3100289B10 /* UserEntity+CoreDataClass.swift */,
+				BA0A73872DB39B3100289B10 /* UserEntity+CoreDataProperties.swift */,
+				BA0A73832DB39ADE00289B10 /* SafeLogin.xcdatamodeld */,
 				BA579A5D2DB22A4F001C4936 /* SafeLogin */,
 				BA579A5C2DB22A4F001C4936 /* Products */,
 			);
@@ -164,9 +164,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0A736A2DB38DC800289B10 /* User+CoreDataProperties.swift in Sources */,
-				BA0A736B2DB38DC800289B10 /* User+CoreDataClass.swift in Sources */,
-				BA0A73672DB38D7E00289B10 /* SafeLogin.xcdatamodeld in Sources */,
+				BA0A73882DB39B3100289B10 /* UserEntity+CoreDataProperties.swift in Sources */,
+				BA0A73892DB39B3100289B10 /* UserEntity+CoreDataClass.swift in Sources */,
+				BA0A73852DB39ADE00289B10 /* SafeLogin.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,12 +427,12 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		BA0A73652DB38D7E00289B10 /* SafeLogin.xcdatamodeld */ = {
+		BA0A73832DB39ADE00289B10 /* SafeLogin.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				BA0A73662DB38D7E00289B10 /* SafeLogin.xcdatamodel */,
+				BA0A73842DB39ADE00289B10 /* SafeLogin.xcdatamodel */,
 			);
-			currentVersion = BA0A73662DB38D7E00289B10 /* SafeLogin.xcdatamodel */;
+			currentVersion = BA0A73842DB39ADE00289B10 /* SafeLogin.xcdatamodel */;
 			path = SafeLogin.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

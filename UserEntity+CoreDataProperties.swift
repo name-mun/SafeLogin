@@ -1,5 +1,5 @@
 //
-//  User+CoreDataProperties.swift
+//  UserEntity+CoreDataProperties.swift
 //  SafeLogin
 //
 //  Created by 서문가은 on 4/19/25.
@@ -13,7 +13,7 @@ import CoreData
 extension UserEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<UserEntity> {
-        return NSFetchRequest<UserEntity>(entityName: "User")
+        return NSFetchRequest<UserEntity>(entityName: "UserEntity")
     }
 
     @NSManaged public var id: String?

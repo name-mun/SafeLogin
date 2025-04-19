@@ -13,6 +13,7 @@ import RxCocoa
 
 enum SignupStatus {
     
+    case idAlreadyExists
     case invalidId
     case invalidPassword
     case passwordMismatch
@@ -36,36 +37,20 @@ final class SignupViewModel {
     // 회원가입 가능 상태 확인 메서드
     private func checkSigupStatus() {
         
-        // TODO: - 아이디가 존재하는지 확인
-        
-        if !User.availableId(id) {
+        // 아이디가 존재하는지 확인
+        if let user = CoreDataManager.shared.fetchUser(id) {
+            signupStatusRelay.accept(.idAlreadyExists)
+            print("가입 불가")
+        } else if !User.availableId(id) { // id가 유효한지 확인
             signupStatusRelay.accept(.invalidId)
-        } else if !User.availablePassword(password) {
+        } else if !User.availablePassword(password) { // password가 유효한지 확인
             signupStatusRelay.accept(.invalidPassword)
-        } else if password != confirmPassword {
+        } else if password != confirmPassword { // confirmPassword가 올바른지 확인
             signupStatusRelay.accept(.passwordMismatch)
         } else {
-            let user = User(id: id, password: password, nickName: nickname)
-            // TODO: - 코어데이터에 유저 정보 저장
+            print("회원가입!")
+            CoreDataManager.shared.createUser(id: id, password: password, nickname: nickname)
             signupStatusRelay.accept(.available)
-        }
-    }
-    
-    private func checkId() {
-        if !User.availableId(id) {
-            signupStatusRelay.accept(.invalidId)
-        }
-        
-        // 아이디가 중복되는지 체크
-    }
-    
-    private func checkPassword() {
-        if !User.availablePassword(password) {
-            signupStatusRelay.accept(.invalidPassword)
-        }
-        
-        if password != confirmPassword {
-            signupStatusRelay.accept(.passwordMismatch)
         }
     }
 }
