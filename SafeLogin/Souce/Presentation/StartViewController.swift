@@ -10,10 +10,14 @@ import UIKit
 final class StartViewController: UIViewController {
     
     private let startView = StartView()
+    
+    override func loadView() {
+        view = startView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        setupAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -21,10 +25,21 @@ final class StartViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    private func setupUI() {
-        view = startView
+    // 버튼 액션 연결
+    private func setupAction() {
+        // 시작 버튼 액션 연결
+        startView.startButton.addAction(UIAction{ [weak self] _ in
+            guard let self else { return }
+            self.handleLoginFlow()
+        }, for: .touchUpInside)
     }
-
-
+    
+    private func handleLoginFlow() {
+        // 로그인 여부 확인
+        if UserDefaults.standard.bool(forKey: "isLogined") {
+            navigationController?.pushViewController(LoginSuccessViewController(), animated: true)
+        } else {
+            navigationController?.pushViewController(SignupViewController(), animated: true)
+        }
+    }
 }
-

@@ -49,6 +49,7 @@ final class SignupViewModel {
             print("비밀번호 불일치")
         } else {
             CoreDataManager.shared.createUser(id: id, password: password, nickname: nickname)
+            UserDefaults.standard.set(true, forKey: "isLogined")
             signupStatusRelay.accept(.available)
             print("가입 완료")
         }

@@ -26,6 +26,7 @@ final class LoginSuccessViewModel {
     
     private func deleteAccount() {
         CoreDataManager.shared.deleteUser(userId)
+        UserDefaults.standard.set(false, forKey: "isLogined")
     }
 }
 
