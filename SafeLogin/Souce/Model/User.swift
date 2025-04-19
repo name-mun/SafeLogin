@@ -8,15 +8,15 @@
 import Foundation
 
 struct User {
-    let ID: String
+    let id: String
     var password: String
     var nickName: String
     
-    func availableID() -> Bool {
+    static func availableId(_ id: String) -> Bool {
         return true
     }
     
-    func availablePassword() -> Bool {
+    static func availablePassword(_ password: String) -> Bool {
         return true
     }
 }
