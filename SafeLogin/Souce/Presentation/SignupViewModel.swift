@@ -38,7 +38,7 @@ final class SignupViewModel {
     private func checkSigupStatus() {
         
         // 아이디가 존재하는지 확인
-        if let user = CoreDataManager.shared.fetchUser(id) {
+        if let _ = CoreDataManager.shared.fetchUser(id) {
             signupStatusRelay.accept(.idAlreadyExists)
             print("가입 불가")
         } else if !User.availableId(id) { // id가 유효한지 확인
@@ -48,7 +48,6 @@ final class SignupViewModel {
         } else if password != confirmPassword { // confirmPassword가 올바른지 확인
             signupStatusRelay.accept(.passwordMismatch)
         } else {
-            print("회원가입!")
             CoreDataManager.shared.createUser(id: id, password: password, nickname: nickname)
             signupStatusRelay.accept(.available)
         }

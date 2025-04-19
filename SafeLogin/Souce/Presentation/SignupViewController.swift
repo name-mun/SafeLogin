@@ -34,7 +34,7 @@ extension SignupViewController {
     private func bind() {
         let idText = signupView.idView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
         let passwordText = signupView.passwordView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
-        let confirmPasswordText = signupView.passwordView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
+        let confirmPasswordText = signupView.confirmPasswordView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
         let nicknameText = signupView.nickNameView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
         let signupButtonTapped = signupView.signupButton.rx.tap.asObservable()
         let input = SignupViewModel.Input(
