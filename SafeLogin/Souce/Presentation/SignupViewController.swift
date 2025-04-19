@@ -65,26 +65,29 @@ extension SignupViewController {
             .disposed(by: disposeBag)
         
         output.availableId
+            .skip(1)
             .drive(with: self, onNext: { owner, result in
                 owner.signupView.updateIdTextField(result)
             })
             .disposed(by: disposeBag)
         
         output.availablePassword
+            .skip(1)
             .drive(with: self, onNext: { owner, result in
                 owner.signupView.updatePasswordTextField(result)
             })
             .disposed(by: disposeBag)
         
         output.availableConfirmPassword
+            .skip(1)
             .drive(with: self, onNext: { owner, result in
                 owner.signupView.updateConfirmPasswordTextField(result)
             })
             .disposed(by: disposeBag)
         
-        output.availableNickname
+        output.availableSignupButton
             .drive(with: self, onNext: { owner, result in
-                owner.signupView.updateNicknameTextField(result)
+                owner.signupView.updateSignupButton(result)
             })
             .disposed(by: disposeBag)
     }

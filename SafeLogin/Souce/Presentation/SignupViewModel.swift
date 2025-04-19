@@ -23,10 +23,10 @@ enum SignupStatus {
 final class SignupViewModel {
     
     private let signupStatusRelay = PublishRelay<SignupStatus>()
-    private let availableIdRelay = PublishRelay<Bool>()
-    private let availablePasswordRelay = PublishRelay<Bool>()
-    private let availableConfirmPasswordRelay = PublishRelay<Bool>()
-    private let availableNicknameRelay = PublishRelay<Bool>()
+    private let availableIdRelay = BehaviorRelay<Bool>(value: false)
+    private let availablePasswordRelay = BehaviorRelay<Bool>(value: false)
+    private let availableConfirmPasswordRelay = BehaviorRelay<Bool>(value: false)
+    private let availableSignupButton = PublishRelay<Bool>()
     private let disposeBag = DisposeBag()
     
     private var id = ""
@@ -35,6 +35,14 @@ final class SignupViewModel {
     private var nickname = ""
     
     init() {}
+    
+    private func isEnabledSignupButton() {
+        if availableIdRelay.value && availablePasswordRelay.value && availableConfirmPasswordRelay.value && !nickname.isEmpty {
+            availableSignupButton.accept(true)
+        } else {
+            availableSignupButton.accept(false)
+        }
+    }
     
     // 회원가입 가능 상태 확인 메서드
     private func checkSigupStatus() {
@@ -98,7 +106,7 @@ extension SignupViewModel {
         let availableId: Driver<Bool>
         let availablePassword: Driver<Bool>
         let availableConfirmPassword: Driver<Bool>
-        let availableNickname: Driver<Bool>
+        let availableSignupButton: Driver<Bool>
     }
     
     func transform(_ input: Input) -> Output {
@@ -107,6 +115,7 @@ extension SignupViewModel {
             .subscribe(onNext: { owner, id in
                 owner.id = id
                 owner.availableId()
+                owner.isEnabledSignupButton()
             }).disposed(by: disposeBag)
         
         input.passwordText
@@ -114,6 +123,7 @@ extension SignupViewModel {
             .subscribe(onNext: { owner, password in
                 owner.password = password
                 owner.availablePassword()
+                owner.isEnabledSignupButton()
             }).disposed(by: disposeBag)
         
         input.confirmPasswordText
@@ -121,12 +131,14 @@ extension SignupViewModel {
             .subscribe(onNext: { owner, confirmPassword in
                 owner.confirmPassword = confirmPassword
                 owner.availableConfirmPassword()
+                owner.isEnabledSignupButton()
             }).disposed(by: disposeBag)
         
         input.nicknameText
             .withUnretained(self)
             .subscribe(onNext: { owner, nickname in
                 owner.nickname = nickname
+                owner.isEnabledSignupButton()
             }).disposed(by: disposeBag)
         
         input.signupButtonTapped
@@ -134,13 +146,13 @@ extension SignupViewModel {
             .subscribe(onNext: { owner, _ in
                 owner.checkSigupStatus()
             }).disposed(by: disposeBag)
-        
+                        
         return Output(
             signupStatus: signupStatusRelay.asDriver(onErrorDriveWith: .empty()),
             availableId: availableIdRelay.asDriver(onErrorDriveWith: .empty()),
             availablePassword: availablePasswordRelay.asDriver(onErrorDriveWith: .empty()),
             availableConfirmPassword: availableConfirmPasswordRelay.asDriver(onErrorDriveWith: .empty()),
-            availableNickname: availableNicknameRelay.asDriver(onErrorDriveWith: .empty())
+            availableSignupButton: availableSignupButton.asDriver(onErrorDriveWith: .empty())
         )
     }
 }

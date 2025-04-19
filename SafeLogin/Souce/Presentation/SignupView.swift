@@ -43,8 +43,9 @@ final class SignupView: UIView {
     let signupButton = UIButton(type: .system).then {
         $0.setTitle("가입하기", for: .normal)
         $0.tintColor = .white
-        $0.backgroundColor = .black
+        $0.backgroundColor = .gray
         $0.layer.cornerRadius = 12
+        $0.isEnabled = false
     }
 
     override init(frame: CGRect) {
@@ -133,13 +134,13 @@ extension SignupView {
         }
     }
     
-    func updateNicknameTextField(_ isAvailable: Bool) {
+    func updateSignupButton(_ isAvailable: Bool) {
         if !isAvailable {
-            self.nickNameView.inputTextField.layer.borderColor = UIColor.red.cgColor
-            self.nickNameView.inputDescriptionLabel.text = "유효한 형식을 입력해주세요."
+            self.signupButton.isEnabled = false
+            self.signupButton.backgroundColor = .gray
         } else {
-            self.nickNameView.inputTextField.layer.borderColor = UIColor.gray.cgColor
-            self.nickNameView.inputDescriptionLabel.text = ""
+            self.signupButton.isEnabled = true
+            self.signupButton.backgroundColor = .blue
         }
     }
 }
