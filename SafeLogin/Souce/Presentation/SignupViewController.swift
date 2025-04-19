@@ -35,9 +35,9 @@ final class SignupViewController: UIViewController {
 extension SignupViewController {
     
     private func bind() {
-        let idText = signupView.idView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
-        let passwordText = signupView.passwordView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
-        let confirmPasswordText = signupView.confirmPasswordView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
+        let idText = signupView.idView.inputTextField.rx.text.orEmpty.skip(2).asObservable()
+        let passwordText = signupView.passwordView.inputTextField.rx.text.orEmpty.skip(2).asObservable()
+        let confirmPasswordText = signupView.confirmPasswordView.inputTextField.rx.text.orEmpty.skip(2).asObservable()
         let nicknameText = signupView.nickNameView.inputTextField.rx.text.orEmpty.skip(1).asObservable()
         let signupButtonTapped = signupView.signupButton.rx.tap.asObservable()
         let input = SignupViewModel.Input(
@@ -61,6 +61,30 @@ extension SignupViewController {
                     print()
                 case .available: owner.connectLoginSuccessView()
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        output.availableId
+            .drive(with: self, onNext: { owner, result in
+                owner.signupView.updateIdTextField(result)
+            })
+            .disposed(by: disposeBag)
+        
+        output.availablePassword
+            .drive(with: self, onNext: { owner, result in
+                owner.signupView.updatePasswordTextField(result)
+            })
+            .disposed(by: disposeBag)
+        
+        output.availableConfirmPassword
+            .drive(with: self, onNext: { owner, result in
+                owner.signupView.updateConfirmPasswordTextField(result)
+            })
+            .disposed(by: disposeBag)
+        
+        output.availableNickname
+            .drive(with: self, onNext: { owner, result in
+                owner.signupView.updateNicknameTextField(result)
             })
             .disposed(by: disposeBag)
     }

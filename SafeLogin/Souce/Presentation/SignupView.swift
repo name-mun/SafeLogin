@@ -98,5 +98,48 @@ final class SignupView: UIView {
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
     }
+}
+
+
+extension SignupView {
     
+    func updateIdTextField(_ isAvailable: Bool) {
+        if !isAvailable {
+            self.idView.inputTextField.layer.borderColor = UIColor.red.cgColor
+            self.idView.inputDescriptionLabel.text = "유효한 형식을 입력해주세요."
+        } else {
+            self.idView.inputTextField.layer.borderColor = UIColor.gray.cgColor
+            self.idView.inputDescriptionLabel.text = ""
+        }
+    }
+    
+    func updatePasswordTextField(_ isAvailable: Bool) {
+        if !isAvailable {
+            self.passwordView.inputTextField.layer.borderColor = UIColor.red.cgColor
+            self.passwordView.inputDescriptionLabel.text = "유효한 형식을 입력해주세요."
+        } else {
+            self.passwordView.inputTextField.layer.borderColor = UIColor.gray.cgColor
+            self.passwordView.inputDescriptionLabel.text = ""
+        }
+    }
+    
+    func updateConfirmPasswordTextField(_ isAvailable: Bool) {
+        if !isAvailable {
+            self.confirmPasswordView.inputTextField.layer.borderColor = UIColor.red.cgColor
+            self.confirmPasswordView.inputDescriptionLabel.text = "비밀번호를 확인해주세요."
+        } else {
+            self.confirmPasswordView.inputTextField.layer.borderColor = UIColor.gray.cgColor
+            self.confirmPasswordView.inputDescriptionLabel.text = ""
+        }
+    }
+    
+    func updateNicknameTextField(_ isAvailable: Bool) {
+        if !isAvailable {
+            self.nickNameView.inputTextField.layer.borderColor = UIColor.red.cgColor
+            self.nickNameView.inputDescriptionLabel.text = "유효한 형식을 입력해주세요."
+        } else {
+            self.nickNameView.inputTextField.layer.borderColor = UIColor.gray.cgColor
+            self.nickNameView.inputDescriptionLabel.text = ""
+        }
+    }
 }

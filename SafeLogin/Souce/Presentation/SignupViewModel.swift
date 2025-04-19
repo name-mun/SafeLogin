@@ -23,6 +23,10 @@ enum SignupStatus {
 final class SignupViewModel {
     
     private let signupStatusRelay = PublishRelay<SignupStatus>()
+    private let availableIdRelay = PublishRelay<Bool>()
+    private let availablePasswordRelay = PublishRelay<Bool>()
+    private let availableConfirmPasswordRelay = PublishRelay<Bool>()
+    private let availableNicknameRelay = PublishRelay<Bool>()
     private let disposeBag = DisposeBag()
     
     private var id = ""
@@ -38,15 +42,6 @@ final class SignupViewModel {
         if let _ = CoreDataManager.shared.fetchUser(id) {
             signupStatusRelay.accept(.idAlreadyExists)
             print("아이디 존재")
-        } else if !availableId(id) { // id가 유효한지 확인
-            signupStatusRelay.accept(.invalidId)
-            print("아이디 형식 확인")
-        } else if !availablePassword(password) { // password가 유효한지 확인
-            signupStatusRelay.accept(.invalidPassword)
-            print("비밀번호 형식 확인")
-        } else if password != confirmPassword { // confirmPassword가 올바른지 확인
-            signupStatusRelay.accept(.passwordMismatch)
-            print("비밀번호 불일치")
         } else {
             CoreDataManager.shared.createUser(id: id, password: password, nickname: nickname)
             UserDefaults.standard.set(true, forKey: "isLogined")
@@ -56,17 +51,35 @@ final class SignupViewModel {
     }
     
     // 아이디 형식 확인
-    func availableId(_ id: String) -> Bool {
+    private func availableId() {
         let regex = "^[a-z](?=[a-z0-9]{5,19}@)[a-z0-9]{5,19}@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", regex)
-        return emailTest.evaluate(with: id)
+        
+        if emailTest.evaluate(with: id) {
+            availableIdRelay.accept(true)
+        } else {
+            availableIdRelay.accept(false)
+        }
     }
     
     // 비밀번호 형식 확인
-    func availablePassword(_ password: String) -> Bool {
+    private func availablePassword() {
         let regex = "^(?=.*[A-Za-z].*)(?=.*[0-9]|.*[^A-Za-z0-9]).{8,}$"
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", regex)
-        return passwordTest.evaluate(with: password)
+        
+        if passwordTest.evaluate(with: password) {
+            availablePasswordRelay.accept(true)
+        } else {
+            availablePasswordRelay.accept(false)
+        }
+    }
+    
+    private func availableConfirmPassword() {
+        if password == confirmPassword {
+            availableConfirmPasswordRelay.accept(true)
+        } else {
+            availableConfirmPasswordRelay.accept(false)
+        }
     }
 }
 
@@ -82,6 +95,10 @@ extension SignupViewModel {
     
     struct Output {
         let signupStatus: Driver<SignupStatus>
+        let availableId: Driver<Bool>
+        let availablePassword: Driver<Bool>
+        let availableConfirmPassword: Driver<Bool>
+        let availableNickname: Driver<Bool>
     }
     
     func transform(_ input: Input) -> Output {
@@ -89,18 +106,21 @@ extension SignupViewModel {
             .withUnretained(self)
             .subscribe(onNext: { owner, id in
                 owner.id = id
+                owner.availableId()
             }).disposed(by: disposeBag)
         
         input.passwordText
             .withUnretained(self)
             .subscribe(onNext: { owner, password in
                 owner.password = password
+                owner.availablePassword()
             }).disposed(by: disposeBag)
         
         input.confirmPasswordText
             .withUnretained(self)
             .subscribe(onNext: { owner, confirmPassword in
                 owner.confirmPassword = confirmPassword
+                owner.availableConfirmPassword()
             }).disposed(by: disposeBag)
         
         input.nicknameText
@@ -115,6 +135,12 @@ extension SignupViewModel {
                 owner.checkSigupStatus()
             }).disposed(by: disposeBag)
         
-        return Output(signupStatus: signupStatusRelay.asDriver(onErrorDriveWith: .empty()))
+        return Output(
+            signupStatus: signupStatusRelay.asDriver(onErrorDriveWith: .empty()),
+            availableId: availableIdRelay.asDriver(onErrorDriveWith: .empty()),
+            availablePassword: availablePasswordRelay.asDriver(onErrorDriveWith: .empty()),
+            availableConfirmPassword: availableConfirmPasswordRelay.asDriver(onErrorDriveWith: .empty()),
+            availableNickname: availableNicknameRelay.asDriver(onErrorDriveWith: .empty())
+        )
     }
 }

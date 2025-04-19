@@ -27,6 +27,11 @@ final class InputView: UIView {
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
         $0.leftViewMode = .always
     }
+    
+    let inputDescriptionLabel = UILabel().then {
+        $0.textAlignment = .left
+        $0.textColor = .red
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,7 +52,8 @@ final class InputView: UIView {
     private func setupUI() {
         [
             inputTitleLabel,
-            inputTextField
+            inputTextField,
+            inputDescriptionLabel
         ].forEach {
             addSubview($0)
         }
@@ -60,6 +66,11 @@ final class InputView: UIView {
         inputTextField.snp.makeConstraints {
             $0.top.equalTo(inputTitleLabel.snp.bottom).offset(8)
             $0.height.equalTo(48)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        inputDescriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(inputTextField.snp.bottom).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
     }
