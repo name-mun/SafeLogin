@@ -20,7 +20,7 @@ final class InputView: UIView {
     }
     
     // 입력 텍스트 필드
-    private let inputTextField = UITextField().then {
+    let inputTextField = UITextField().then {
         $0.textAlignment = .left
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.gray.cgColor
