@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0A71C52DB3340E00289B10 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C42DB3340E00289B10 /* RxCocoa */; };
+		BA0A71C72DB3340E00289B10 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C62DB3340E00289B10 /* RxRelay */; };
+		BA0A71C92DB3340E00289B10 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C82DB3340E00289B10 /* RxSwift */; };
 		BA7C51D42DB2309900D8ADA1 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA7C51D32DB2309900D8ADA1 /* Then */; };
 		BA7C51D72DB230C000D8ADA1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA7C51D62DB230C000D8ADA1 /* SnapKit */; };
 /* End PBXBuildFile section */
@@ -41,7 +44,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA0A71C52DB3340E00289B10 /* RxCocoa in Frameworks */,
 				BA7C51D42DB2309900D8ADA1 /* Then in Frameworks */,
+				BA0A71C92DB3340E00289B10 /* RxSwift in Frameworks */,
+				BA0A71C72DB3340E00289B10 /* RxRelay in Frameworks */,
 				BA7C51D72DB230C000D8ADA1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +93,9 @@
 			packageProductDependencies = (
 				BA7C51D32DB2309900D8ADA1 /* Then */,
 				BA7C51D62DB230C000D8ADA1 /* SnapKit */,
+				BA0A71C42DB3340E00289B10 /* RxCocoa */,
+				BA0A71C62DB3340E00289B10 /* RxRelay */,
+				BA0A71C82DB3340E00289B10 /* RxSwift */,
 			);
 			productName = SafeLogin;
 			productReference = BA579A5B2DB22A4F001C4936 /* SafeLogin.app */;
@@ -119,6 +128,7 @@
 			packageReferences = (
 				BA7C51D22DB2309900D8ADA1 /* XCRemoteSwiftPackageReference "Then" */,
 				BA7C51D52DB230C000D8ADA1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BA579A5C2DB22A4F001C4936 /* Products */;
@@ -350,6 +360,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
 		BA7C51D22DB2309900D8ADA1 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -369,6 +387,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BA0A71C42DB3340E00289B10 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		BA0A71C62DB3340E00289B10 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		BA0A71C82DB3340E00289B10 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		BA7C51D32DB2309900D8ADA1 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA7C51D22DB2309900D8ADA1 /* XCRemoteSwiftPackageReference "Then" */;
