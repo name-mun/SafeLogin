@@ -116,6 +116,9 @@ extension SignupViewModel {
                 owner.password = password
                 owner.availablePassword()
                 owner.isEnabledSignupButton()
+                if !owner.confirmPassword.isEmpty {
+                    owner.availableConfirmPassword()
+                }
             }).disposed(by: disposeBag)
         
         input.confirmPasswordText
