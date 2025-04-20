@@ -55,7 +55,7 @@ final class SignupView: UIView {
     // MARK: - 레이아웃 구성
 
     private func setupUI() {
-        backgroundColor = .white
+        backgroundColor = .background
         
         [
             inputStackView,
@@ -96,7 +96,7 @@ extension SignupView {
     func updateIdTextField(_ isAvailable: Bool, _ isAccountProblem: Bool) {
         if !isAvailable {
             self.idView.inputTextField.layer.borderColor = UIColor.red.cgColor
-            let text = isAccountProblem ? "존재하는 이메일입니다." : "유효한 형식을 입력해주세요."
+            let text = isAccountProblem ? "존재하는 아이디입니다." : "이메일(@이후) 제외하고 6~20자, 영문 소문자와 숫자만, 숫자 시작 불가"
             self.idView.inputDescriptionLabel.text = text
         } else {
             self.idView.inputTextField.layer.borderColor = UIColor.gray.cgColor
@@ -107,7 +107,7 @@ extension SignupView {
     func updatePasswordTextField(_ isAvailable: Bool) {
         if !isAvailable {
             self.passwordView.inputTextField.layer.borderColor = UIColor.red.cgColor
-            self.passwordView.inputDescriptionLabel.text = "유효한 형식을 입력해주세요."
+            self.passwordView.inputDescriptionLabel.text = "숫자, 영문, 특수문자 중 2개 이상 조합, 최소 8자"
         } else {
             self.passwordView.inputTextField.layer.borderColor = UIColor.gray.cgColor
             self.passwordView.inputDescriptionLabel.text = ""
@@ -117,7 +117,7 @@ extension SignupView {
     func updateConfirmPasswordTextField(_ isAvailable: Bool) {
         if !isAvailable {
             self.confirmPasswordView.inputTextField.layer.borderColor = UIColor.red.cgColor
-            self.confirmPasswordView.inputDescriptionLabel.text = "비밀번호를 확인해주세요."
+            self.confirmPasswordView.inputDescriptionLabel.text = "비밀번호가 일치하지 않습니다."
         } else {
             self.confirmPasswordView.inputTextField.layer.borderColor = UIColor.gray.cgColor
             self.confirmPasswordView.inputDescriptionLabel.text = ""

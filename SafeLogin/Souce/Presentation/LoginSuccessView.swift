@@ -62,7 +62,7 @@ final class LoginSuccessView: UIView {
     // MARK: - 레이아웃 구성
     
     private func setupUI() {
-        backgroundColor = .white
+        backgroundColor = .background
         
         [
             logoLabel,
