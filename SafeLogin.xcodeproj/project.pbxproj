@@ -6,7 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BA0A71C52DB3340E00289B10 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C42DB3340E00289B10 /* RxCocoa */; };
+		BA0A71C72DB3340E00289B10 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C62DB3340E00289B10 /* RxRelay */; };
+		BA0A71C92DB3340E00289B10 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA0A71C82DB3340E00289B10 /* RxSwift */; };
+		BA0A73852DB39ADE00289B10 /* SafeLogin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA0A73832DB39ADE00289B10 /* SafeLogin.xcdatamodeld */; };
+		BA7C51D42DB2309900D8ADA1 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA7C51D32DB2309900D8ADA1 /* Then */; };
+		BA7C51D72DB230C000D8ADA1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA7C51D62DB230C000D8ADA1 /* SnapKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA22F2CE2DB4DDA00070F215 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA579A532DB22A4F001C4936 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA579A5A2DB22A4F001C4936;
+			remoteInfo = SafeLogin;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		BA0A73842DB39ADE00289B10 /* SafeLogin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SafeLogin.xcdatamodel; sourceTree = "<group>"; };
+		BA22F2CA2DB4DDA00070F215 /* SafeLoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeLoginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA579A5B2DB22A4F001C4936 /* SafeLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -21,6 +42,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		BA22F2CB2DB4DDA00070F215 /* SafeLoginTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SafeLoginTests;
+			sourceTree = "<group>";
+		};
 		BA579A5D2DB22A4F001C4936 /* SafeLogin */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -32,10 +58,22 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BA22F2C72DB4DDA00070F215 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BA579A582DB22A4F001C4936 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA0A71C52DB3340E00289B10 /* RxCocoa in Frameworks */,
+				BA7C51D42DB2309900D8ADA1 /* Then in Frameworks */,
+				BA0A71C92DB3340E00289B10 /* RxSwift in Frameworks */,
+				BA0A71C72DB3340E00289B10 /* RxRelay in Frameworks */,
+				BA7C51D72DB230C000D8ADA1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +83,9 @@
 		BA579A522DB22A4F001C4936 = {
 			isa = PBXGroup;
 			children = (
+				BA0A73832DB39ADE00289B10 /* SafeLogin.xcdatamodeld */,
 				BA579A5D2DB22A4F001C4936 /* SafeLogin */,
+				BA22F2CB2DB4DDA00070F215 /* SafeLoginTests */,
 				BA579A5C2DB22A4F001C4936 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				BA579A5B2DB22A4F001C4936 /* SafeLogin.app */,
+				BA22F2CA2DB4DDA00070F215 /* SafeLoginTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +102,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BA22F2C92DB4DDA00070F215 /* SafeLoginTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA22F2D02DB4DDA00070F215 /* Build configuration list for PBXNativeTarget "SafeLoginTests" */;
+			buildPhases = (
+				BA22F2C62DB4DDA00070F215 /* Sources */,
+				BA22F2C72DB4DDA00070F215 /* Frameworks */,
+				BA22F2C82DB4DDA00070F215 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA22F2CF2DB4DDA00070F215 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BA22F2CB2DB4DDA00070F215 /* SafeLoginTests */,
+			);
+			name = SafeLoginTests;
+			packageProductDependencies = (
+			);
+			productName = SafeLoginTests;
+			productReference = BA22F2CA2DB4DDA00070F215 /* SafeLoginTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BA579A5A2DB22A4F001C4936 /* SafeLogin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA579A6E2DB22A50001C4936 /* Build configuration list for PBXNativeTarget "SafeLogin" */;
@@ -78,6 +142,11 @@
 			);
 			name = SafeLogin;
 			packageProductDependencies = (
+				BA7C51D32DB2309900D8ADA1 /* Then */,
+				BA7C51D62DB230C000D8ADA1 /* SnapKit */,
+				BA0A71C42DB3340E00289B10 /* RxCocoa */,
+				BA0A71C62DB3340E00289B10 /* RxRelay */,
+				BA0A71C82DB3340E00289B10 /* RxSwift */,
 			);
 			productName = SafeLogin;
 			productReference = BA579A5B2DB22A4F001C4936 /* SafeLogin.app */;
@@ -93,6 +162,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					BA22F2C92DB4DDA00070F215 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = BA579A5A2DB22A4F001C4936;
+					};
 					BA579A5A2DB22A4F001C4936 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -107,17 +180,30 @@
 			);
 			mainGroup = BA579A522DB22A4F001C4936;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BA7C51D22DB2309900D8ADA1 /* XCRemoteSwiftPackageReference "Then" */,
+				BA7C51D52DB230C000D8ADA1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BA579A5C2DB22A4F001C4936 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				BA579A5A2DB22A4F001C4936 /* SafeLogin */,
+				BA22F2C92DB4DDA00070F215 /* SafeLoginTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BA22F2C82DB4DDA00070F215 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BA579A592DB22A4F001C4936 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,16 +214,66 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BA579A572DB22A4F001C4936 /* Sources */ = {
+		BA22F2C62DB4DDA00070F215 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA579A572DB22A4F001C4936 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA0A73852DB39ADE00289B10 /* SafeLogin.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BA22F2CF2DB4DDA00070F215 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA579A5A2DB22A4F001C4936 /* SafeLogin */;
+			targetProxy = BA22F2CE2DB4DDA00070F215 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		BA22F2D12DB4DDA00070F215 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mun.SafeLoginTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeLogin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SafeLogin";
+			};
+			name = Debug;
+		};
+		BA22F2D22DB4DDA00070F215 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mun.SafeLoginTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeLogin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SafeLogin";
+			};
+			name = Release;
+		};
 		BA579A6F2DB22A50001C4936 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -316,6 +452,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BA22F2D02DB4DDA00070F215 /* Build configuration list for PBXNativeTarget "SafeLoginTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA22F2D12DB4DDA00070F215 /* Debug */,
+				BA22F2D22DB4DDA00070F215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BA579A562DB22A4F001C4936 /* Build configuration list for PBXProject "SafeLogin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -335,6 +480,74 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+		BA7C51D22DB2309900D8ADA1 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		BA7C51D52DB230C000D8ADA1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA0A71C42DB3340E00289B10 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		BA0A71C62DB3340E00289B10 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		BA0A71C82DB3340E00289B10 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA0A71C32DB3340E00289B10 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		BA7C51D32DB2309900D8ADA1 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA7C51D22DB2309900D8ADA1 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		BA7C51D62DB230C000D8ADA1 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA7C51D52DB230C000D8ADA1 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		BA0A73832DB39ADE00289B10 /* SafeLogin.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA0A73842DB39ADE00289B10 /* SafeLogin.xcdatamodel */,
+			);
+			currentVersion = BA0A73842DB39ADE00289B10 /* SafeLogin.xcdatamodel */;
+			path = SafeLogin.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BA579A532DB22A4F001C4936 /* Project object */;
 }
