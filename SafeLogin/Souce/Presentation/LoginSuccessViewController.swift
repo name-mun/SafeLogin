@@ -20,10 +20,6 @@ final class LoginSuccessViewController: UIViewController {
         view = loginSuccessView
         bind()
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,12 +32,20 @@ final class LoginSuccessViewController: UIViewController {
 extension LoginSuccessViewController {
     
     private func bind() {
+        let viewDidLoad = rx.methodInvoked(#selector(viewDidLoad)).map { _ in }
         let logoutButtonTapped = loginSuccessView.logoutButton.rx.tap.asObservable()
         let deleteAccountButtonTapped = loginSuccessView.deleteAccountButton.rx.tap.asObservable()
         let input = LoginSuccessViewModel.Input(
+            viewDidLoad: viewDidLoad,
             logoutButtonTapped: logoutButtonTapped,
             deleteAccountButtonTapped: deleteAccountButtonTapped)
         let output = loginSuccessViewModel.transform(input)
+        
+        output.nickname
+            .drive(with: self, onNext: { owner, nickname in
+                owner.loginSuccessView.updateName(nickname)
+            })
+            .disposed(by: disposeBag)
         
         output.success
             .drive(with: self, onNext: { owner, _ in

@@ -50,6 +50,7 @@ final class SignupViewModel {
         } else {
             CoreDataManager.shared.createUser(id: id, password: password, nickname: nickname)
             UserDefaults.standard.set(true, forKey: "isLogined")
+            UserDefaults.standard.set(nickname, forKey: "nickname")
             signupStatusRelay.accept(.available)
             print("가입 완료")
         }
