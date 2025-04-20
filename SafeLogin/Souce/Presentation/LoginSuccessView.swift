@@ -15,33 +15,39 @@ final class LoginSuccessView: UIView {
     private let logoLabel = UILabel().then {
         $0.text = "SafeLogin"
         $0.textAlignment = .center
+        $0.font = UIFont.System.semibold20
+        $0.textColor = .accent
     }
     
     // 이름 라벨
     private let nameLabel = UILabel().then {
         $0.textAlignment = .center
+        $0.font = UIFont.System.bold40
     }
     
     // 타이틀 라벨
     private let titleLabel = UILabel().then {
-        $0.text = "환영합니다."
+        $0.text = "환영합니다✨"
         $0.textAlignment = .center
+        $0.font = UIFont.System.semibold20
     }
 
     // 로그아웃 버튼
     let logoutButton = UIButton(type: .system).then {
-        $0.backgroundColor = .gray
+        $0.backgroundColor = .accent
         $0.tintColor = .white
         $0.layer.cornerRadius = 10
         $0.setTitle("로그아웃", for: .normal)
+        $0.titleLabel?.font = UIFont.System.semibold16
     }
     
     // 회원탈퇴 버튼
     let deleteAccountButton = UIButton(type: .system).then {
-        $0.backgroundColor = .red
+        $0.backgroundColor = .gray
         $0.tintColor = .white
         $0.layer.cornerRadius = 10
         $0.setTitle("회원탈퇴", for: .normal)
+        $0.titleLabel?.font = UIFont.System.semibold16
     }
     
     override init(frame: CGRect) {
@@ -76,7 +82,7 @@ final class LoginSuccessView: UIView {
         }
         
         nameLabel.snp.makeConstraints {
-            $0.top.equalTo(logoLabel.snp.bottom).offset(40)
+            $0.centerY.equalToSuperview().offset(-40)
             $0.centerX.equalToSuperview()
         }
         
@@ -86,17 +92,15 @@ final class LoginSuccessView: UIView {
         }
         
         logoutButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(200)
-            $0.height.equalTo(100)
+            $0.bottom.equalTo(deleteAccountButton.snp.top).offset(-20)
+            $0.height.equalTo(52)
+            $0.horizontalEdges.equalToSuperview().inset(12)
         }
         
         deleteAccountButton.snp.makeConstraints {
-            $0.top.equalTo(logoutButton.snp.bottom).offset(20)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(200)
-            $0.height.equalTo(100)
+            $0.height.equalTo(52)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(12)
         }
     }
 

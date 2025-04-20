@@ -14,18 +14,34 @@ final class StartView: UIView {
     
     // MARK: - UI Components
     
+    // 로고 이미지
+    private let logoImage = UIImageView().then {
+        $0.image = UIImage(named: "logo")
+        $0.contentMode = .scaleAspectFit
+    }
+    
     // 로고 라벨
     private let logoLabel = UILabel().then {
         $0.text = "SafeLogin"
+        $0.textColor = .accent
+        $0.font = UIFont.System.bold24
         $0.textAlignment = .center
+    }
+    
+    // 설명 라벨
+    private let descriptionLabel = UILabel().then {
+        $0.text = "빠르고 안전하게 로그인하세요!"
+        $0.textAlignment = .center
+        $0.font = UIFont.System.semibold16
     }
 
     // 시작하기 버튼
     let startButton = UIButton(type: .system).then {
-        $0.backgroundColor = .blue
+        $0.backgroundColor = .accent
         $0.tintColor = .white
         $0.layer.cornerRadius = 10
         $0.setTitle("시작하기", for: .normal)
+        $0.titleLabel?.font = UIFont.System.semibold16
     }
     
     override init(frame: CGRect) {
@@ -43,22 +59,34 @@ final class StartView: UIView {
         backgroundColor = .white
         
         [
+            logoImage,
             logoLabel,
+            descriptionLabel,
             startButton
         ].forEach {
             addSubview($0)
         }
         
-        logoLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(200)
+        logoImage.snp.makeConstraints {
+            $0.bottom.equalTo(logoLabel.snp.top).offset(-16)
             $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(150)
+        }
+        
+        logoLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(10)
         }
         
+        descriptionLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(logoLabel.snp.bottom).offset(12)
+        }
+        
         startButton.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.width.equalTo(200)
-            $0.height.equalTo(100)
+            $0.height.equalTo(52)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(12)
         }
     }
     

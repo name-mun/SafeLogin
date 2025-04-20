@@ -13,12 +13,6 @@ import Then
 final class SignupView: UIView {
     
     // MARK: - UI Components
-
-    // 타이틀 라벨
-    private let titleLabel = UILabel().then {
-        $0.text = "회원가입"
-        $0.textAlignment = .center
-    }
     
     // 입력 스택 뷰
     private let inputStackView = UIStackView().then {
@@ -46,6 +40,7 @@ final class SignupView: UIView {
         $0.backgroundColor = .gray
         $0.layer.cornerRadius = 12
         $0.isEnabled = false
+        $0.titleLabel?.font = UIFont.System.semibold16
     }
 
     override init(frame: CGRect) {
@@ -63,7 +58,6 @@ final class SignupView: UIView {
         backgroundColor = .white
         
         [
-            titleLabel,
             inputStackView,
             signupButton
         ].forEach {
@@ -82,19 +76,14 @@ final class SignupView: UIView {
             }
         }
         
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(12)
-            $0.centerX.equalToSuperview()
-        }
-        
         inputStackView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(12)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(20)
             $0.leading.trailing.equalToSuperview().inset(12)
             $0.height.equalTo(440)
         }
-        
+
         signupButton.snp.makeConstraints {
-            $0.height.equalTo(48)
+            $0.height.equalTo(52)
             $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
@@ -141,7 +130,7 @@ extension SignupView {
             self.signupButton.backgroundColor = .gray
         } else {
             self.signupButton.isEnabled = true
-            self.signupButton.backgroundColor = .blue
+            self.signupButton.backgroundColor = .accent
         }
     }
 }
