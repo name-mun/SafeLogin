@@ -24,6 +24,7 @@ final class StartView: UIView {
     private let logoLabel = UILabel().then {
         $0.text = "SafeLogin"
         $0.textColor = .accent
+        $0.font = UIFont.System.bold24
         $0.textAlignment = .center
     }
     
@@ -31,6 +32,7 @@ final class StartView: UIView {
     private let descriptionLabel = UILabel().then {
         $0.text = "빠르고 안전하게 로그인하세요!"
         $0.textAlignment = .center
+        $0.font = UIFont.System.semibold16
     }
 
     // 시작하기 버튼
@@ -39,6 +41,7 @@ final class StartView: UIView {
         $0.tintColor = .white
         $0.layer.cornerRadius = 10
         $0.setTitle("시작하기", for: .normal)
+        $0.titleLabel?.font = UIFont.System.semibold16
     }
     
     override init(frame: CGRect) {
@@ -81,9 +84,8 @@ final class StartView: UIView {
         }
         
         startButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
             $0.height.equalTo(52)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
     }

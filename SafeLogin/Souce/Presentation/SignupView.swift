@@ -18,6 +18,7 @@ final class SignupView: UIView {
     private let titleLabel = UILabel().then {
         $0.text = "회원가입"
         $0.textAlignment = .center
+        $0.font = UIFont.System.semibold20
     }
     
     // 입력 스택 뷰
@@ -46,6 +47,7 @@ final class SignupView: UIView {
         $0.backgroundColor = .gray
         $0.layer.cornerRadius = 12
         $0.isEnabled = false
+        $0.titleLabel?.font = UIFont.System.semibold16
     }
 
     override init(frame: CGRect) {
@@ -92,9 +94,9 @@ final class SignupView: UIView {
             $0.leading.trailing.equalToSuperview().inset(12)
             $0.height.equalTo(440)
         }
-        
+
         signupButton.snp.makeConstraints {
-            $0.height.equalTo(48)
+            $0.height.equalTo(52)
             $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20)
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
@@ -141,7 +143,7 @@ extension SignupView {
             self.signupButton.backgroundColor = .gray
         } else {
             self.signupButton.isEnabled = true
-            self.signupButton.backgroundColor = .blue
+            self.signupButton.backgroundColor = .accent
         }
     }
 }

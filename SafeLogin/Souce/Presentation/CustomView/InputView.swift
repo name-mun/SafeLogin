@@ -17,6 +17,7 @@ final class InputView: UIView {
     // 입력 타이틀 라벨
     private let inputTitleLabel = UILabel().then {
         $0.textAlignment = .left
+        $0.font = UIFont.System.semibold16
     }
     
     // 입력 텍스트 필드
@@ -26,11 +27,13 @@ final class InputView: UIView {
         $0.layer.borderColor = UIColor.gray.cgColor
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
         $0.leftViewMode = .always
+        $0.font = UIFont.System.medium16
     }
     
     let inputDescriptionLabel = UILabel().then {
         $0.textAlignment = .left
         $0.textColor = .red
+        $0.font = UIFont.System.medium12
     }
 
     override init(frame: CGRect) {
