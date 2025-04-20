@@ -58,10 +58,7 @@ final class SignupViewModel {
     
     // 아이디 형식 확인
     private func availableId() {
-        let regex = "^[a-z](?=[a-z0-9]{5,19}@)[a-z0-9]{5,19}@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", regex)
-        
-        if emailTest.evaluate(with: id) {
+        if UserValidator.isValidId(id) {
             availableIdRelay.accept(true)
         } else {
             availableIdRelay.accept(false)
@@ -70,10 +67,7 @@ final class SignupViewModel {
     
     // 비밀번호 형식 확인
     private func availablePassword() {
-        let regex = "^(?=.*[A-Za-z].*)(?=.*[0-9]|.*[^A-Za-z0-9]).{8,}$"
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", regex)
-        
-        if passwordTest.evaluate(with: password) {
+        if UserValidator.isValidPassword(password) {
             availablePasswordRelay.accept(true)
         } else {
             availablePasswordRelay.accept(false)
