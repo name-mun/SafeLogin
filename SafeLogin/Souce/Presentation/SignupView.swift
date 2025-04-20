@@ -43,8 +43,9 @@ final class SignupView: UIView {
     let signupButton = UIButton(type: .system).then {
         $0.setTitle("가입하기", for: .normal)
         $0.tintColor = .white
-        $0.backgroundColor = .black
+        $0.backgroundColor = .gray
         $0.layer.cornerRadius = 12
+        $0.isEnabled = false
     }
 
     override init(frame: CGRect) {
@@ -98,5 +99,49 @@ final class SignupView: UIView {
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
     }
+}
+
+
+extension SignupView {
     
+    func updateIdTextField(_ isAvailable: Bool, _ isAccountProblem: Bool) {
+        if !isAvailable {
+            self.idView.inputTextField.layer.borderColor = UIColor.red.cgColor
+            let text = isAccountProblem ? "존재하는 이메일입니다." : "유효한 형식을 입력해주세요."
+            self.idView.inputDescriptionLabel.text = text
+        } else {
+            self.idView.inputTextField.layer.borderColor = UIColor.gray.cgColor
+            self.idView.inputDescriptionLabel.text = ""
+        }
+    }
+    
+    func updatePasswordTextField(_ isAvailable: Bool) {
+        if !isAvailable {
+            self.passwordView.inputTextField.layer.borderColor = UIColor.red.cgColor
+            self.passwordView.inputDescriptionLabel.text = "유효한 형식을 입력해주세요."
+        } else {
+            self.passwordView.inputTextField.layer.borderColor = UIColor.gray.cgColor
+            self.passwordView.inputDescriptionLabel.text = ""
+        }
+    }
+    
+    func updateConfirmPasswordTextField(_ isAvailable: Bool) {
+        if !isAvailable {
+            self.confirmPasswordView.inputTextField.layer.borderColor = UIColor.red.cgColor
+            self.confirmPasswordView.inputDescriptionLabel.text = "비밀번호를 확인해주세요."
+        } else {
+            self.confirmPasswordView.inputTextField.layer.borderColor = UIColor.gray.cgColor
+            self.confirmPasswordView.inputDescriptionLabel.text = ""
+        }
+    }
+    
+    func updateSignupButton(_ isAvailable: Bool) {
+        if !isAvailable {
+            self.signupButton.isEnabled = false
+            self.signupButton.backgroundColor = .gray
+        } else {
+            self.signupButton.isEnabled = true
+            self.signupButton.backgroundColor = .blue
+        }
+    }
 }

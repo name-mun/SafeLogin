@@ -17,6 +17,11 @@ final class LoginSuccessView: UIView {
         $0.textAlignment = .center
     }
     
+    // 이름 라벨
+    private let nameLabel = UILabel().then {
+        $0.textAlignment = .center
+    }
+    
     // 타이틀 라벨
     private let titleLabel = UILabel().then {
         $0.text = "환영합니다."
@@ -55,6 +60,7 @@ final class LoginSuccessView: UIView {
         
         [
             logoLabel,
+            nameLabel,
             titleLabel,
             logoutButton,
             deleteAccountButton
@@ -69,13 +75,18 @@ final class LoginSuccessView: UIView {
             $0.height.equalTo(40)
         }
         
-        titleLabel.snp.makeConstraints {
+        nameLabel.snp.makeConstraints {
             $0.top.equalTo(logoLabel.snp.bottom).offset(40)
             $0.centerX.equalToSuperview()
         }
         
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom).offset(16)
+            $0.centerX.equalToSuperview()
+        }
+        
         logoutButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(200)
             $0.height.equalTo(100)
@@ -89,4 +100,11 @@ final class LoginSuccessView: UIView {
         }
     }
 
+}
+
+extension LoginSuccessView {
+    
+    func updateName(_ ninkname: String) {
+        nameLabel.text = "\(ninkname)님"
+    }
 }
