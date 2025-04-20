@@ -22,11 +22,14 @@ final class SignupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "회원가입"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
     }
 }
 
